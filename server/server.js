@@ -1,50 +1,48 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const cors = require("cors");
-const connectdb = require("./config/db");
 const cookieParser = require("cookie-parser");
-const path = require("path");
+const cors = require("cors");
+
+// Route imports
+const userRoutes = require("./routes/userRouter");
+const boardRoutes = require("./routes/boardRouter");
+const listRoutes = require("./routes/listRouter");
+const expenseRoutes = require("./routes/expenseRouter");
 
 dotenv.config();
-connectdb();
 
 const app = express();
-
-// Allowed frontend domains (Vercel + local dev)
-const allowedOrigins = [
-  "https://expense-tracker-x72x.vercel.app", // your frontend (vercel)
-  "http://localhost:5173",                   // dev frontend (vite)
-];
-
-// Enable CORS with credentials
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-}));
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
 
-// Routes
-app.use("/api/auth", require("./routes/userRouter"));
-app.use("/api/boards", require("./routes/boardRouter"));
-app.use("/api/lists", require("./routes/listRouter"));
-app.use("/api/expenses", require("./routes/expenseRouter"));
+// CORS Configuration
+app.use(cors({
+  origin: 'https://expense-tracker-x72x.vercel.app',  
+  credentials: true,
+}));
 
-// Optional: Serve frontend if deployed together
+// Routes
+app.use("/api/auth", userRoutes);
+app.use("/api/boards", boardRoutes);
+app.use("/api/lists", listRoutes);
+app.use("/api/expenses", expenseRoutes);
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
+
+// Default route
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("📦 Expense Tracker API is running...");
 });
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
