@@ -1,0 +1,348 @@
+/* === THEME VARIABLES === */
+:root {
+  --bg: #f3f4f6;
+  --text: #1f2937;
+  --card: #ffffff;
+  --accent: #4f46e5;
+  --button-bg: #4f46e5;
+  --button-text: #ffffff;
+}
+
+.dark {
+  --bg: #111827;
+  --text: #e5e7eb;
+  --card: #1f2937;
+  --accent: #10b981;
+  --button-bg: #10b981;
+  --button-text: #ffffff;
+}
+
+/* === BASE RESET === */
+* {
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* === SHARED === */
+input, textarea, select {
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid #cbd5e1;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  border: 1px solid #4b5563;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  filter: brightness(0.95);
+}
+
+/* === AUTH PAGES === */
+.login-container,
+.register-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.login-container h2,
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.login-container input,
+.register-container input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* === DASHBOARD === */
+.dashboard {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--accent);
+}
+
+.board-input {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.board-input input {
+  flex: 1;
+}
+
+.board-list {
+  display: grid;
+  gap: 14px;
+}
+
+.board-card {
+  background-color: var(--card);
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.board-card:hover {
+  transform: scale(1.01);
+}
+
+.board-card h3 {
+  margin: 0 0 10px;
+}
+
+.board-card button {
+  margin-right: 8px;
+  margin-top: 10px;
+}
+
+.board-card button:nth-child(2) {
+  background-color: #f97316;
+}
+
+.board-card button:nth-child(3) {
+  background-color: #ef4444;
+}
+
+/* === BOARD PAGE === */
+.board-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+}
+
+.board-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.board-page input {
+  width: calc(100% - 140px);
+}
+
+.board-page ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.board-page li {
+  background-color: var(--card);
+  border: 1px solid #e2e8f0;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-card button {
+  margin-left: 8px;
+  font-size: 13px;
+}
+
+.list-card button:nth-child(1) {
+  background-color: var(--accent);
+}
+.list-card button:nth-child(2) {
+  background-color: #f59e0b;
+}
+.list-card button:nth-child(3) {
+  background-color: #dc2626;
+}
+
+/* === EXPENSE PAGE === */
+.list-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+}
+
+.list-page h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--accent);
+}
+
+.expense-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.expense-input input {
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.expense-list {
+  display: grid;
+  gap: 14px;
+}
+
+.expense-card {
+  background-color: var(--card);
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.expense-card h4 {
+  margin: 0;
+}
+
+.expense-card p {
+  margin: 4px 0;
+  color: var(--text);
+}
+
+.expense-card button {
+  margin-right: 8px;
+}
+
+.expense-card button:last-child {
+  background-color: #ef4444;
+}
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.toggle-track {
+  width: 60px;
+  height: 28px;
+  background-color: var(--accent);
+  border-radius: 999px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  background-color: var(--card);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-track.dark .toggle-thumb {
+  transform: translateX(30px);
+}
+
+
+/* === MOBILE (max width 600px) === */
+@media (max-width: 600px) {
+  .login-container,
+  .register-container,
+  .dashboard,
+  .board-page,
+  .list-page {
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+  }
+
+  .board-input,
+  .expense-input {
+    flex-direction: column;
+  }
+
+  .board-input input,
+  .expense-input input,
+  .board-input button,
+  .expense-input button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .board-card,
+  .expense-card,
+  .list-card {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .list-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-card button,
+  .board-card button,
+  .expense-card button {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  input,
+  button {
+    font-size: 14px;
+  }
+}
