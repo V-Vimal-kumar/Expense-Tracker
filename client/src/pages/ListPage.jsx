@@ -12,7 +12,7 @@ export default function ListPage() {
 
     const fetchExpenses = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/expenses/${listId}`, {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/expenses/${listId}`, {
                 withCredentials: true,
             });
             setExpenses(res.data);
@@ -34,7 +34,7 @@ export default function ListPage() {
 
         try {
             const res = await axios.post(
-                `http://localhost:5000/api/expenses`,
+                `${import.meta.env.VITE_API_URL}/expenses`,
                 { ...newExpense, listId },
                 { withCredentials: true }
             );
@@ -48,7 +48,7 @@ export default function ListPage() {
 
     const deleteExpense = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/expenses/${id}`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/expenses/${id}`, {
                 withCredentials: true,
             });
             setExpenses(expenses.filter((e) => e._id !== id));
@@ -64,7 +64,7 @@ export default function ListPage() {
 
         try {
             const res = await axios.put(
-                `http://localhost:5000/api/expenses/${id}`,
+                `${import.meta.env.VITE_API_URL}/expenses/${id}`,
                 { title: newTitle, amount: newAmount },
                 { withCredentials: true }
             );

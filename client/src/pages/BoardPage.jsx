@@ -12,7 +12,7 @@ export default function BoardPage() {
 
     const fetchLists = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/lists/${boardId}`, {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/lists/${boardId}`, {
                 withCredentials: true,
             });
             setLists(res.data);
@@ -25,7 +25,7 @@ export default function BoardPage() {
         if (!title.trim()) return;
         try {
             const res = await axios.post(
-                `http://localhost:5000/api/lists`,
+                `${import.meta.env.VITE_API_URL}/lists`,
                 { title, boardId },
                 { withCredentials: true }
             );
@@ -38,7 +38,7 @@ export default function BoardPage() {
 
     const deleteList = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/lists/${id}`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/lists/${id}`, {
                 withCredentials: true,
             });
             setLists(lists.filter((l) => l._id !== id));
@@ -54,7 +54,7 @@ export default function BoardPage() {
 
         try {
             const res = await axios.put(
-                `http://localhost:5000/api/lists/${id}`,
+                `${import.meta.env.VITE_API_URL}/lists/${id}`,
                 { title: newTitle },
                 { withCredentials: true }
             );

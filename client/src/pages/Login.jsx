@@ -20,7 +20,7 @@ export default function Login() {
 
 // Inside your try/catch:
 try {
-  await axios.post("http://localhost:5000/api/auth/login", form, {
+  await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, form, {
     withCredentials: true,
   });
   toast.success("Login successful!");
